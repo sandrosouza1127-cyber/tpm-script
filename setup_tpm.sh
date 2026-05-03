@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Verifica se está rodando como root
+if [ "$EUID" -ne 0 ]; then
+  echo "Execute como root: sudo ./setup_tpm.sh"
+  exit 1
+fi
+
 echo "Atualizando..."
 apt update && apt upgrade -y
 
